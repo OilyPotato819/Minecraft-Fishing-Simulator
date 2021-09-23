@@ -3,6 +3,7 @@
 // Variables to Store HTML Elements
 let steveImgEl = document.getElementById("steve-img");
 let alexImgEl = document.getElementById("alex-img");
+let villagerImgEl = document.getElementById("villager-img");
 let fishBtnEl = document.getElementById("fish-btn");
 let imgResultEl = document.getElementById("img-result");
 let numCodEl = document.getElementById("num-cod");
@@ -20,6 +21,7 @@ let numPuffer = 0;
 // Event Listeners
 steveImgEl.addEventListener("click", selectSteve);
 alexImgEl.addEventListener("click", selectAlex);
+villagerImgEl.addEventListener("click", selectVillager);
 fishBtnEl.addEventListener("click", fishOnce);
 
 // Event Functions
@@ -27,6 +29,7 @@ function selectSteve() {
     // Update Active Border
     steveImgEl.classList.add("active");
     alexImgEl.classList.remove("active");
+    villagerImgEl.classList.remove("active");
 
     // Update Character Selection Variable
     character = "Steve";
@@ -36,9 +39,20 @@ function selectAlex() {
     // Update Active Border
     alexImgEl.classList.add("active");
     steveImgEl.classList.remove("active");
+    villagerImgEl.classList.remove("active");
 
     // Update Character Selection Variable
     character = "Alex";
+}
+
+function selectVillager() {
+    // Update Active Border
+    villagerImgEl.classList.add("active");
+    alexImgEl.classList.remove("active");
+    steveImgEl.classList.remove("active");
+
+    // Update Character Selection Variable
+    character = "Villager";
 }
 
 function fishOnce() {
@@ -48,16 +62,63 @@ function fishOnce() {
         let randNum = Math.random();
         console.log(randNum)
         if (randNum < 0.7) {
-            imgResultEl.src = "img/Raw-Cod.png"
+            numCod++;
+            numCodEl.innerHTML = numCod;
+            imgResultEl.src = "img/Raw-Cod.png";
         } else if (randNum < 0.9) {
-            imgResultEl.src = "img/Raw-Salmon.png"
+            numSalmon++;
+            numSalmonEl.innerHTML = numSalmon;
+            imgResultEl.src = "img/Raw-Salmon.png";
         } else if (randNum < 0.95) {
-            imgResultEl.src = "img/Tropical-Fish.png"
+            numTropical++;
+            numTropicalEl.innerHTML = numTropical;
+            imgResultEl.src = "img/Tropical-Fish.png";
         } else {
-            imgResultEl.src = "img/Pufferfish.png"
+            numPuffer++;
+            numPufferEl.innerHTML = numPuffer;
+            imgResultEl.src = "img/Pufferfish.png";
+        }
+    } else if (character === "Alex") {
+        // Use Alex Probability Distribution
+        let randNum = Math.random();
+        console.log(randNum)
+        if (randNum < 0.1) {
+            numCod++;
+            numCodEl.innerHTML = numCod;
+            imgResultEl.src = "img/Raw-Cod.png";
+        } else if (randNum < 0.2) {
+            numSalmon++;
+            numSalmonEl.innerHTML = numSalmon;
+            imgResultEl.src = "img/Raw-Salmon.png";
+        } else if (randNum < 0.5) {
+            numTropical++;
+            numTropicalEl.innerHTML = numTropical;
+            imgResultEl.src = "img/Tropical-Fish.png";
+        } else {
+            numPuffer++;
+            numPufferEl.innerHTML = numPuffer;
+            imgResultEl.src = "img/Pufferfish.png";
         }
     } else {
-        // Use Alex Probability Distribution
-
+        // Use Villager Probability Distribution
+        let randNum = Math.random();
+        console.log(randNum)
+        if (randNum < 0.05) {
+            numCod++;
+            numCodEl.innerHTML = numCod;
+            imgResultEl.src = "img/Raw-Cod.png";
+        } else if (randNum < 0.1) {
+            numSalmon++;
+            numSalmonEl.innerHTML = numSalmon;
+            imgResultEl.src = "img/Raw-Salmon.png";
+        } else if (randNum < 0.3) {
+            numTropical++;
+            numTropicalEl.innerHTML = numTropical;
+            imgResultEl.src = "img/Tropical-Fish.png";
+        } else {
+            numPuffer++;
+            numPufferEl.innerHTML = numPuffer;
+            imgResultEl.src = "img/Pufferfish.png";
+        }
     }
 }
